@@ -1,2 +1,2 @@
-# inteligencia_artificial_prolog_up
-Repositorio de Prolog de la materia Inteligencia Artificial - UP
+# Inteligencia Artificial - Prolog
+- Todo el código subido a este repositorio fue probado utilizando: https://swish.swi-prolog.org/
