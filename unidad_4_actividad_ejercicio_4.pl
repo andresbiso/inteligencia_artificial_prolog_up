@@ -1,4 +1,4 @@
-% Ejercicio 3
+% Ejercicio 4
 /*
  * Crear un programa en Prolog que represente la base de conocimiento
  * de un árbol genealógico de tu preferencia.
