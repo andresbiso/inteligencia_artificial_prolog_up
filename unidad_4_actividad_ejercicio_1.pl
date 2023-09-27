@@ -1,4 +1,4 @@
-% Ejercicio 1 
+% Ejercicio 1
 /*
  * Crear un programa en Prolog que represente la base de conocimiento de animales.
  * Deben contener al menos 20 hechos y 5 reglas. 
@@ -34,6 +34,6 @@ oviparo(ornitorrinco).
 % reglas
 es_venenoso(X) :- venenoso(X).
 es_oviparo(X) :- ave(X) ; oviparo(X).
-es_viviparo(X) :- mamifero(X) , not(oviparo(X)).
+es_viviparo(X) :- mamifero(X) , not(es_oviparo(X)).
 es_sangre_fria(X) :- reptil(X) ; anfibio(X).
 es_sangre_tibia(X) :- mamifero(X) ; ave(X).
