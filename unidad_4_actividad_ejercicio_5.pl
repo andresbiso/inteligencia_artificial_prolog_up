@@ -48,6 +48,6 @@ calorias(manzana, 100).
 calorias(pera, 100).
 
 % reglas
-
 plato_principal(X) :- carne(X) ; pescado(X).
 es_comida(X,Y,Z) :- entrada(X) , plato_principal(Y) , postre(Z).
+muchas_calorias(X) :- calorias(X, Y), Y > 300.
