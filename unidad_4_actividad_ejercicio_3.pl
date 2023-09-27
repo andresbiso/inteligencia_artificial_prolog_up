@@ -29,3 +29,6 @@ se_encontro(anillo_magico, cueva).
 estudian(estudiantes_literatura, persona_mitica).
 
 % reglas
+es_jorobado(X) :- tiene(X, joroba).
+es_persona_mitica(X) :- es_jorobado(X).
+es_estudiado(X) :- es_persona_mitica(X).
