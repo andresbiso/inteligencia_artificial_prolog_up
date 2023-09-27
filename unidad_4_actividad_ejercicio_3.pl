@@ -1,51 +1,31 @@
-%# hechos
-%## predicados simples
-man(peter).
-man(juan).
-man(horacio).
-woman(eve).
-woman(juana).
-%## predicados compuestos
-father(peter, juan).
-mother(eve, juan).
+% Ejercicio 3
+/*
+ * Diseñar un programa en Prolog que represente el ejemplo de la Red Semántica
+ * que figura en el apunte correspondiente a los Jorobados y Bilbo.
+ */
 
-%# reglas
-is_man(X) :- man(X).
-has_child(P) :- father(P, _).
-is_father(P) :- man(P) , has_child(P).
-is_child(C) :- father(_, C) ; mother(_, C).
+/* Dado el siguiente conocimiento, construir la correspondiente Red Semántica. 
+ * - Los jorobados son personas pequeñas. 
+ * - Bilbo es un jorobado. 
+ * - Los jorobados tienen dedos gordos. 
+ * - Bilbo posee un anillo mágico. 
+ * - El anillo fue encontrado en una cueva. 
+ * - Los jorobados son personas míticas
+ * y las personas míticas son estudiadas
+ * por los estudiantes de literatura.
+ */ 
 
-%# consultas al motor de inferencias
-% man(juan). -> true
-% man(jonatan). -> false
-% father(peter, juan). -> true
+% hechos
+es_un(persona_mitica, persona).
+es_un(joroba, persona_mitica).
+es_un(joroba, persona_pequena).
+es_un(anillo_magico, anillo).
 
-%# consulta con variable
-% man(X).
-% X = peter
-% X = juan
-% X = horacio
-%! valores de X para que el predicado sea verdadero
-% father(peter,X).
-% X = juan
+tiene(joroba, dedos_gordos).
+tiene(bilbo, joroba).
+tiene(bilbo, anillo_magico).
 
-%# consulta con reglas
-% is_man(juan). -> true
-% has_child(peter). -> true
-% has_child(X).
-% X = peter
-% is_father(peter). -> true
-% is_child(C).
-% C = juan
-% C = juan
-%! aparece dos veces porque es un OR y se cumple para dos hechos
+se_encontro(anillo_magico, cueva).
+estudian(estudiantes_literatura, persona_mitica).
 
-%# comentarios
-%- con ctrl + enter corremos las consultas
-%- con "." indicamos fin de línea
-%- las variables van en mayúscula
-%- los hechos forman la base de conocimientos del programa
-%- podemos pensar las reglas como si fuesen funciones de proposiciones
-%- "_": cualquier valor
-%- ",": AND
-%- ";": OR
+% reglas
