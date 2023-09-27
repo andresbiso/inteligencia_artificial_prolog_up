@@ -1,51 +1,53 @@
-%# hechos
-%## predicados simples
-man(peter).
-man(juan).
-man(horacio).
-woman(eve).
-woman(juana).
-%## predicados compuestos
-father(peter, juan).
-mother(eve, juan).
+% Ejercicio 5
+/*
+ * Dado el ejemplo que figura en la presentación sobre prolog de alimentos,
+ * mejorarlo agregando al menos 15 hechos y 2 reglas. 
+ */
 
-%# reglas
-is_man(X) :- man(X).
-has_child(P) :- father(P, _).
-is_father(P) :- man(P) , has_child(P).
-is_child(C) :- father(_, C) ; mother(_, C).
+% hechos
+entrada(paella).
+entrada(gazpacho).
+entrada(pasta).
+entrada(provoleta).
+entrada(baston_mozzarella).
+entrada(choripan).
+entrada(papas_fritas).
+carne(filete_de_cerdo).
+carne(pollo_asado).
+carne(bife_de_chorizo).
+pescado(trucha).
+pescado(bacalao).
+postre(flan).
+postre(nueces_con_miel).
+postre(naranja).
+postre(batata_y_dulce).
+postre(membrillo_y_dulce).
+postre(helado).
+postre(manzana).
+postre(pera).
 
-%# consultas al motor de inferencias
-% man(juan). -> true
-% man(jonatan). -> false
-% father(peter, juan). -> true
+calorias(paella, 200).
+calorias(gazpacho, 150).
+calorias(pasta, 300).
+calorias(provoleta, 300).
+calorias(baston_mozzarella, 400).
+calorias(choripan, 400).
+calorias(papas_fritas, 300).
+calorias(filete_de_cerdo, 400).
+calorias(pollo_asado, 280).
+calorias(bife_de_chorizo, 500).
+calorias(trucha, 160).
+calorias(bacalao, 300).
+calorias(flan, 200).
+calorias(nueces_con_miel, 500).
+calorias(naranja, 50).
+calorias(batata_y_dulce, 200).
+calorias(membrillo_y_dulce, 200).
+calorias(helado, 200).
+calorias(manzana, 100).
+calorias(pera, 100).
 
-%# consulta con variable
-% man(X).
-% X = peter
-% X = juan
-% X = horacio
-%! valores de X para que el predicado sea verdadero
-% father(peter,X).
-% X = juan
+% reglas
 
-%# consulta con reglas
-% is_man(juan). -> true
-% has_child(peter). -> true
-% has_child(X).
-% X = peter
-% is_father(peter). -> true
-% is_child(C).
-% C = juan
-% C = juan
-%! aparece dos veces porque es un OR y se cumple para dos hechos
-
-%# comentarios
-%- con ctrl + enter corremos las consultas
-%- con "." indicamos fin de línea
-%- las variables van en mayúscula
-%- los hechos forman la base de conocimientos del programa
-%- podemos pensar las reglas como si fuesen funciones de proposiciones
-%- "_": cualquier valor
-%- ",": AND
-%- ";": OR
+plato_principal(X) :- carne(X) ; pescado(X).
+es_comida(X,Y,Z) :- entrada(X) , plato_principal(Y) , postre(Z).
