@@ -13,3 +13,5 @@ come(perro, gato).
 come(delfin, mojarrita).
 
 % reglas
+depredador(X) :- come(X,_).
+presa(X) :- come(_,X).
